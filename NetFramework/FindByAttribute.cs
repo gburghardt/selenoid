@@ -3,7 +3,7 @@ using System;
 
 namespace Selenoid
 {
-    public class FindByAttribute : System.Attribute
+    public class FindByAttribute : Attribute, IElementSearchStrategy
     {
         private string className;
         private string cssSelector;
@@ -14,7 +14,7 @@ namespace Selenoid
         private string tagName;
         private string xpath;
 
-        public By FindStrategy { get; private set; }
+        private By FindStrategy { get; set; }
 
         public string ClassName
         {
@@ -62,6 +62,11 @@ namespace Selenoid
         {
             get => xpath;
             set => FindStrategy = By.XPath(xpath = value);
+        }
+
+        public IWebElement FindElement(IWebDriver driver)
+        {
+            return driver.FindElement(FindStrategy);
         }
     }
 }

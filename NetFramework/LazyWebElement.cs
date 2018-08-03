@@ -9,14 +9,15 @@ namespace Selenoid
 {
     class LazyWebElement : IWebElement
     {
-        public LazyWebElement(IWebDriver driver, FindByAttribute findBy)
+        public LazyWebElement(IWebDriver driver, IElementSearchStrategy searchStrategy)
         {
             this.driver = driver ?? throw new ArgumentNullException(nameof(driver));
-            this.findBy = findBy ?? throw new ArgumentNullException(nameof(findBy));
+            this.searchStrategy = searchStrategy ?? throw new ArgumentNullException(nameof(searchStrategy));
         }
 
         private readonly IWebDriver driver;
-        private readonly FindByAttribute findBy;
+        private readonly IElementSearchStrategy searchStrategy;
+
         private IWebElement wrappedElement;
 
         public IWebElement WrappedElement
@@ -25,7 +26,7 @@ namespace Selenoid
             {
                 if (wrappedElement == null)
                 {
-                    wrappedElement = driver.FindElement(findBy.FindStrategy);
+                    wrappedElement = searchStrategy.FindElement(driver);
                 }
 
                 return wrappedElement;

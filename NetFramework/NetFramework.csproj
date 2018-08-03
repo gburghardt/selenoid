@@ -45,9 +45,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FindByAttribute.cs" />
+    <Compile Include="FormFieldAttribute.cs" />
+    <Compile Include="IElementSearchStrategy.cs" />
     <Compile Include="LazyWebElement.cs" />
     <Compile Include="PageModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TableAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
