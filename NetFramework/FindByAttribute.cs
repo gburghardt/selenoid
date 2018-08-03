@@ -5,59 +5,63 @@ namespace Selenoid
 {
     public class FindByAttribute : System.Attribute
     {
-        private By findStrategy;
+        private string className;
+        private string cssSelector;
+        private string id;
+        private string linkText;
+        private string name;
+        private string partialLinkText;
+        private string tagName;
+        private string xpath;
 
-        public By FindStrategy
-        {
-            get => findStrategy;
-
-            set
-            {
-                if (findStrategy != null)
-                    throw new InvalidOperationException($"Strategy for finding an element has already been set ({typeof(By).FullName})");
-
-                findStrategy = value;
-            }
-        }
+        public By FindStrategy { get; private set; }
 
         public string ClassName
         {
-            set => FindStrategy = By.ClassName(value);
+            get => className;
+            set => FindStrategy = By.ClassName(className = value);
         }
 
         public string CssSelector
         {
-            set => FindStrategy = By.CssSelector(value);
+            get => cssSelector;
+            set => FindStrategy = By.CssSelector(cssSelector = value);
         }
 
         public string Id
         {
-            set => FindStrategy = By.Id(value);
+            get => id;
+            set => FindStrategy = By.Id(id = value);
         }
 
         public string LinkText
         {
-            set => FindStrategy = By.LinkText(value);
+            get => linkText;
+            set => FindStrategy = By.LinkText(linkText = value);
         }
 
         public string Name
         {
-            set => FindStrategy = By.Name(value);
+            get => name;
+            set => FindStrategy = By.Name(name = value);
         }
 
         public string PartialLinkText
         {
-            set => FindStrategy = By.PartialLinkText(value);
+            get => partialLinkText;
+            set => FindStrategy = By.PartialLinkText(partialLinkText = value);
         }
 
         public string TagName
         {
-            set => FindStrategy = By.TagName(value);
+            get => tagName;
+            set => FindStrategy = By.TagName(tagName = value);
         }
 
         public string XPath
         {
-            set => FindStrategy = By.XPath(value);
+            get => xpath;
+            set => FindStrategy = By.XPath(xpath = value);
         }
     }
 }
