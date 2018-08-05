@@ -21,7 +21,7 @@ namespace Selenoid
 
         public IWebElement FindElement(IWebDriver driver)
         {
-            return driver.FindElement(By.XPath($"//table/caption[(., '{Caption}')]"));
+            return driver.FindElement(By.XPath($"//table/caption[(., '{Caption}')]/.."));
         }
     }
 }
