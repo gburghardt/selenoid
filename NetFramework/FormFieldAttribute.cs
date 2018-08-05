@@ -21,9 +21,19 @@ namespace Selenoid
 
         public IWebElement FindElement(IWebDriver driver)
         {
-            var label = driver.FindElement(By.XPath($"//label[contains(., '{LabelText}')]"));
+            var xpathForDescendantField = $"//label[contains(., '{LabelText}')]//[self::input or self::textarea or self::select]";
+            var xpathForAssociatedField = $"//label[contains(., '{LabelText}')][@for]";
+            var xpath = $"({xpathForDescendantField}) or ({xpathForAssociatedField})";
+            var labelOrField = driver.FindElement(By.XPath(xpath));
 
-            throw new NotImplementedException();
+            if (labelOrField.TagName == "label")
+            {
+                var associatedFieldId = labelOrField.GetAttribute("for");
+
+                return driver.FindElement(By.Id(associatedFieldId));
+            }
+
+            return labelOrField;
         }
     }
 }

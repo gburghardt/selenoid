@@ -44,6 +44,17 @@ namespace Selenoid.Tests
             Assert.IsNotNull(pageModel.Element);
             mock.VerifyAll();
         }
+
+        [TestMethod]
+        public void InitializesAllProperties()
+        {
+            var mock = new Moq.Mock<IWebDriver>();
+            var pageModel = new PageModelWithMultipleProperties(mock.Object);
+
+            Assert.IsNotNull(pageModel.FirstName);
+            Assert.IsNotNull(pageModel.LastName);
+            mock.VerifyAll();
+        }
     }
 
     public class EmptyPageModel : PageModel
@@ -80,5 +91,18 @@ namespace Selenoid.Tests
         public TestPageModel(IWebDriver driver) : base(driver)
         {
         }
+    }
+
+    public class PageModelWithMultipleProperties : PageModel
+    {
+        public PageModelWithMultipleProperties(IWebDriver driver) : base(driver)
+        {
+        }
+
+        [FindBy(Id = "Person_FirstName")]
+        public IWebElement FirstName { get; protected set; }
+
+        [FormField("Last Name")]
+        public IWebElement LastName { get; protected set; }
     }
 }
