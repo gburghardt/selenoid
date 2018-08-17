@@ -1,0 +1,52 @@
+﻿<!DOCTYPE HTML>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <title>Finding Form Fields</title>
+    </head>
+    <body>
+        <form method="get" action="#">
+            <p>
+                <label>
+                    Textfield Before:
+                    <input type="text" name="a" />
+                </label>
+            </p>
+            
+            <p>
+                <label>
+                    Textfield After:
+                    <input type="text" name="b" />
+                </label>
+            </p>
+            
+            <p>
+                <label>
+                    Textarea Inside:
+                    <textarea name="d"></textarea>
+                </label>
+            </p>
+            
+            <p>
+                <label>
+                    Select Box Inside:
+                    <select name="e">
+                        <option>1</option>
+                        <option>2</option>
+                    </select>
+                </label>
+            </p>
+
+            <p>
+                <label for="c">
+                    Associated Text Field:
+                </label>
+                <input type="text" name="c" id="c" />
+            </p>
+
+            <p>
+                <button type="submit">Submit</button>
+            </p>
+        </form>
+    </body>
+</html>

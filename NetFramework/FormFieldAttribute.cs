@@ -21,7 +21,7 @@ namespace Selenoid
 
         public IWebElement FindElement(IWebDriver driver)
         {
-            var xpathForDescendantField = $"//label[contains(., '{LabelText}')]//[self::input or self::textarea or self::select]";
+            var xpathForDescendantField = $"//label[contains(., '{LabelText}')]//*[self::select or self::input or self::textarea]";
             var xpathForAssociatedField = $"//label[contains(., '{LabelText}')][@for]";
             var xpath = $"({xpathForDescendantField}) or ({xpathForAssociatedField})";
             var labelOrField = driver.FindElement(By.XPath(xpath));

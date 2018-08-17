@@ -69,6 +69,7 @@
     <Compile Include="PageModelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FindingTableTests.cs" />
+    <Compile Include="FindingFormFieldTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -80,6 +81,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Fixtures\FindingFormFields.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Fixtures\FindingTables.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
