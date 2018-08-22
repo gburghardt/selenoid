@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 

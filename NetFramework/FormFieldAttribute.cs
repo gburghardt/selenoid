@@ -23,7 +23,7 @@ namespace Selenoid
         {
             var xpathForDescendantField = $"//label[contains(., '{LabelText}')]//*[self::select or self::input or self::textarea]";
             var xpathForAssociatedField = $"//label[contains(., '{LabelText}')][@for]";
-            var xpath = $"({xpathForDescendantField}) or ({xpathForAssociatedField})";
+            var xpath = $"({xpathForDescendantField}) | ({xpathForAssociatedField})";
             var labelOrField = driver.FindElement(By.XPath(xpath));
 
             if (labelOrField.TagName == "label")
