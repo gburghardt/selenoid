@@ -15,7 +15,9 @@ namespace Selenoid.Tests
         [TestInitialize]
         public void Setup()
         {
-            driver = new ChromeDriver();
+            var options = new ChromeOptions();
+            options.AddArgument("--headless");
+            driver = new ChromeDriver(options);
             driver.Navigate().GoToUrl(webPage);
             form = new FindingFormFieldsPageModel(driver);
         }
