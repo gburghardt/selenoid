@@ -57,6 +57,24 @@ namespace Selenoid.Tests
         {
             Assert.AreEqual("input", form.AssociatedTextField.TagName);
         }
+
+        [TestMethod]
+        public void FindsTextFieldByAriaLabel()
+        {
+            Assert.AreEqual("input", form.AriaLabelTextField.TagName);
+        }
+
+        [TestMethod]
+        public void FindsTextareaByAriaLabel()
+        {
+            Assert.AreEqual("textarea", form.AriaLabelTextarea.TagName);
+        }
+
+        [TestMethod]
+        public void FindsSelectBoxByAriaLabel()
+        {
+            Assert.AreEqual("select", form.AriaLabelSelectBox.TagName);
+        }
     }
 
     public class FindingFormFieldsPageModel : PageModel
@@ -79,5 +97,14 @@ namespace Selenoid.Tests
 
         [FormField("Associated Text Field")]
         public IWebElement AssociatedTextField { get; protected set; }
+
+        [FormField("Aria Label Text Field")]
+        public IWebElement AriaLabelTextField { get; protected set; }
+
+        [FormField("Aria Label Textarea")]
+        public IWebElement AriaLabelTextarea { get; protected set; }
+
+        [FormField("Aria Label Select Box")]
+        public IWebElement AriaLabelSelectBox { get; protected set; }
     }
 }
